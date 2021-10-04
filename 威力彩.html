@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+
+    //     20 到 30 隨機數字
+    //    for (let i = 0; i < 500; i++) {
+    //   const num = Math.round(Math.random() * (30 - 20) + 20)
+    //   if (num <= 20 || num >= 30) {
+    //     console.log('有 ' + num)
+    //   }
+    // }
+    //     用上面練習完成的 function 製作威力彩號碼產生器
+    //     將隨機出的數字用 document.write() 顯示在網頁上
+    //     威力彩規則
+
+
+
+    //includes() 檢查“陣列”裡面有沒有你要檢查的值，有就回傳true，無則false
+    //ex: 
+    //let a = [123, 555, 888];
+    //console.log(a.includes(888)); // true
+
+
+    //     A 區 1~38 取 6 個數字
+    //     B 區 1~8 取 1 個數字
+    const rand = (min, max) => {
+      result = Math.round(Math.random() * (max - min) + min)
+
+      return result;
+    };
+
+
+    let lotteryNum = {
+      A: []
+    };
+
+    // A區
+    for (let i = 0; i < 6; i++) {
+      let ranNum = rand(1, 38);
+      //最前面加一個! 讓他轉為 true 就可以進入if語句中，不然會回傳false就不會進入下面if中
+      if (!lotteryNum.A.includes(ranNum)) {
+        lotteryNum.A.push(ranNum);
+      } else {
+        i--;
+      }
+    }
+
+    //如果A陣列裡面沒有，本次的隨機數，就push; 反之，如果有當次隨機數字就不取，在跑一次
+
+    //B區
+
+    const B = () => {
+      return Math.round(Math.random() * (8 - 1)) + 1;
+    };
+
+    document.write(" A區 " + lotteryNum.A + "<br>");
+    document.write(" B區 " + B());
+
+
+
+  </script>
+</body>
+
+</html>
